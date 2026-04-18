@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>About | Emily Smith</title>
+<title>Project Details</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 
@@ -17,7 +17,7 @@
   font-family: 'Poppins', sans-serif;
 }
 
-/* BODY */
+/* BODY FIX */
 body {
   background: #f5f5f5;
   display: flex;
@@ -69,55 +69,36 @@ header {
   cursor: pointer;
 }
 
-/* Close */
+/* Close button */
 .close-btn {
   display: none;
 }
 
-/* ================= ABOUT ================= */
-.about {
+/* ================= MAIN ================= */
+.container {
   max-width: 900px;
   margin: auto;
-  padding: 60px 20px;
+  padding: 50px 20px;
   text-align: center;
   flex: 1;
 }
 
-.about h1 {
-  font-size: 32px;
-  margin-bottom: 15px;
+/* IMAGE FIX (SAME SIZE ALWAYS) */
+.container img {
+  width: 100%;
+  max-width: 500px;
+  height: 300px;
+  object-fit: cover;
+  border-radius: 15px;
 }
 
-.about p {
-  margin-bottom: 20px;
+/* TEXT */
+h1 {
+  margin: 20px 0 10px;
+}
+
+p {
   line-height: 1.6;
-}
-
-/* SKILLS */
-.skills {
-  margin-top: 30px;
-}
-
-.skill {
-  margin-bottom: 15px;
-  text-align: left;
-}
-
-.skill span {
-  font-weight: 600;
-}
-
-.bar {
-  background: #ddd;
-  height: 8px;
-  border-radius: 5px;
-  margin-top: 5px;
-}
-
-.fill {
-  height: 100%;
-  background: #ff4d5a;
-  border-radius: 5px;
 }
 
 /* ================= CTA ================= */
@@ -132,12 +113,14 @@ header {
   margin: 15px 0;
 }
 
+/* BUTTON */
 .btn {
   padding: 10px 25px;
   background: #ff4d5a;
   color: white;
   text-decoration: none;
   border-radius: 25px;
+  display: inline-block;
 }
 
 /* ================= FOOTER ================= */
@@ -175,6 +158,7 @@ footer {
     right: 0;
   }
 
+  /* SHOW CLOSE BUTTON */
   .close-btn {
     display: block;
     position: absolute;
@@ -201,63 +185,30 @@ footer {
 
     <ul class="nav-links" id="nav-links">
 
+      <!-- CLOSE BUTTON -->
       <div class="close-btn" id="close-btn">✕</div>
 
       <li><a href="index.html">Home</a></li>
       <li><a href="portfolio.html">Portfolio</a></li>
-      <li><a href="about.html">About</a></li>
-      <li><a href="contact.html">Contact</a></li>
+      <li><a href="#">About</a></li>
+      <li><a href="#">Contact</a></li>
 
     </ul>
   </nav>
 </header>
 
-<!-- ABOUT CONTENT -->
-<section class="about">
-  <h1>About Me</h1>
-  <p>
-    Hi, I'm Emily Smith, a passionate Graphic Designer specializing in branding,
-    UI/UX design, and visual storytelling. I love creating designs that are not
-    only visually appealing but also meaningful and impactful.
-  </p>
-
-  <p>
-    With experience in digital design, branding, and user interfaces, I help
-    businesses bring their ideas to life through creative solutions.
-  </p>
-
-  <!-- SKILLS -->
-  <div class="skills">
-
-    <div class="skill">
-      <span>UI/UX Design</span>
-      <div class="bar"><div class="fill" style="width: 90%;"></div></div>
-    </div>
-
-    <div class="skill">
-      <span>Branding</span>
-      <div class="bar"><div class="fill" style="width: 85%;"></div></div>
-    </div>
-
-    <div class="skill">
-      <span>Graphic Design</span>
-      <div class="bar"><div class="fill" style="width: 95%;"></div></div>
-    </div>
-
-    <div class="skill">
-      <span>Web Design</span>
-      <div class="bar"><div class="fill" style="width: 80%;"></div></div>
-    </div>
-
-  </div>
-
-</section>
+<!-- MAIN CONTENT -->
+<div class="container">
+  <img id="project-img">
+  <h1 id="project-title"></h1>
+  <p id="project-desc"></p>
+</div>
 
 <!-- CTA -->
 <section class="cta">
   <h2>Let's Work Together</h2>
   <p>Have a project in mind? I'd love to hear from you.</p>
-  <a href="contact.html" class="btn">Contact Me</a>
+  <a href="#" class="btn">Contact Me</a>
 </section>
 
 <!-- FOOTER -->
@@ -267,6 +218,52 @@ footer {
 
 <script>
 
+/* GET ID */
+const params = new URLSearchParams(window.location.search);
+const id = params.get("id");
+
+/* PROJECT DATA */
+const projects = {
+  1: {
+    title: "Brand Identity Design",
+    img: "https://images.unsplash.com/photo-1611224923853-80b023f02d71",
+    desc: "Complete branding solution for modern businesses."
+  },
+  2: {
+    title: "Website UI Design",
+    img: "https://images.unsplash.com/photo-1559028012-481c04fa702d",
+    desc: "Modern, responsive UI for web applications."
+  },
+  3: {
+    title: "Social Media Graphics",
+    img: "https://images.unsplash.com/photo-1542744173-8e7e53415bb0",
+    desc: "Creative designs for social media campaigns."
+  },
+  4: {
+    title: "Logo Design",
+    img: "https://images.unsplash.com/photo-1507238691740-187a5b1d37b8",
+    desc: "Unique and memorable logo concepts."
+  },
+  5: {
+    title: "Mobile App UI",
+    img: "https://images.unsplash.com/photo-1492724441997-5dc865305da7",
+    desc: "Clean and intuitive mobile UI design."
+  },
+  6: {
+    title: "Poster Design",
+    img: "https://images.unsplash.com/photo-1522199710521-72d69614c702",
+    desc: "Creative posters for marketing promotions."
+  }
+};
+
+/* LOAD DATA */
+if (projects[id]) {
+  document.getElementById("project-title").textContent = projects[id].title;
+  document.getElementById("project-img").src = projects[id].img;
+  document.getElementById("project-desc").textContent = projects[id].desc;
+}
+
+/* MENU */
 const toggle = document.getElementById("menu-toggle");
 const nav = document.getElementById("nav-links");
 const closeBtn = document.getElementById("close-btn");

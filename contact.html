@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact | Emily Smith</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+
+/* RESET */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+/* BODY */
+body {
+  background: #f5f5f5;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* ================= NAVBAR ================= */
+header {
+  background: #111;
+  padding: 15px 40px;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  color: white;
+  font-size: 22px;
+  font-weight: 600;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+}
+
+.nav-links li {
+  margin-left: 25px;
+}
+
+.nav-links a {
+  color: white;
+  text-decoration: none;
+}
+
+.nav-links a:hover {
+  color: #ff4d5a;
+}
+
+/* Hamburger */
+.menu-toggle {
+  display: none;
+  font-size: 26px;
+  color: white;
+  cursor: pointer;
+}
+
+.close-btn {
+  display: none;
+}
+
+/* ================= CONTACT ================= */
+.contact {
+  max-width: 900px;
+  margin: auto;
+  padding: 60px 20px;
+  flex: 1;
+}
+
+.contact h1 {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+/* FORM */
+.form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.input-group {
+  width: 48%;
+}
+
+.input-group.full {
+  width: 100%;
+}
+
+input, textarea {
+  width: 100%;
+  padding: 12px;
+  border: none;
+  border-radius: 8px;
+  outline: none;
+}
+
+textarea {
+  height: 120px;
+  resize: none;
+}
+
+/* BUTTON */
+.submit-btn {
+  margin-top: 10px;
+  padding: 12px;
+  width: 100%;
+  background: #ff4d5a;
+  color: white;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+}
+
+/* ================= CTA ================= */
+.cta {
+  background: #111;
+  color: white;
+  text-align: center;
+  padding: 60px 20px;
+}
+
+.cta p {
+  margin: 15px 0;
+}
+
+.btn {
+  padding: 10px 25px;
+  background: #ff4d5a;
+  color: white;
+  text-decoration: none;
+  border-radius: 25px;
+}
+
+/* ================= FOOTER ================= */
+footer {
+  background: #000;
+  color: white;
+  text-align: center;
+  padding: 15px;
+}
+
+/* ================= MOBILE ================= */
+@media (max-width: 768px) {
+
+  .menu-toggle {
+    display: block;
+  }
+
+  .nav-links {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 250px;
+    height: 100vh;
+    background: #111;
+
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+
+    transition: 0.3s;
+  }
+
+  .nav-links.active {
+    right: 0;
+  }
+
+  .close-btn {
+    display: block;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-size: 26px;
+    color: white;
+    cursor: pointer;
+  }
+
+  .input-group {
+    width: 100%;
+  }
+
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<header>
+  <nav class="navbar">
+    <div class="logo">Emily Smith</div>
+
+    <div class="menu-toggle" id="menu-toggle">☰</div>
+
+    <ul class="nav-links" id="nav-links">
+
+      <div class="close-btn" id="close-btn">✕</div>
+
+      <li><a href="index.html">Home</a></li>
+      <li><a href="portfolio.html">Portfolio</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="contact.html">Contact</a></li>
+
+    </ul>
+  </nav>
+</header>
+
+<!-- CONTACT -->
+<section class="contact">
+  <h1>Contact Me</h1>
+
+  <form class="form">
+    <div class="input-group">
+      <input type="text" placeholder="First Name" required>
+    </div>
+
+    <div class="input-group">
+      <input type="text" placeholder="Last Name" required>
+    </div>
+
+    <div class="input-group">
+      <input type="email" placeholder="Email Address" required>
+    </div>
+
+    <div class="input-group">
+      <input type="text" placeholder="Subject" required>
+    </div>
+
+    <div class="input-group full">
+      <textarea placeholder="Your Message"></textarea>
+    </div>
+
+    <button class="submit-btn">Send Message</button>
+  </form>
+
+</section>
+
+<!-- CTA -->
+<section class="cta">
+  <h2>Let's Work Together</h2>
+  <p>Have a project in mind? I'd love to hear from you.</p>
+  <a href="#" class="btn">Hire Me</a>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>© 2026 Emily Smith. All rights reserved.</p>
+</footer>
+
+<script>
+
+const toggle = document.getElementById("menu-toggle");
+const nav = document.getElementById("nav-links");
+const closeBtn = document.getElementById("close-btn");
+
+toggle.addEventListener("click", () => {
+  nav.classList.add("active");
+});
+
+closeBtn.addEventListener("click", () => {
+  nav.classList.remove("active");
+});
+
+</script>
+
+</body>
+</html>
